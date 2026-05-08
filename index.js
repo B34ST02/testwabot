@@ -197,13 +197,16 @@ async function startBot() {
 
   const sock = makeWASocket({
     auth: state,
-    printQRInTerminal: true,
     browser: Browsers.ubuntu('Chrome'),
     logger: pino({ level: 'silent' }),
   });
 
-  // QR Code muncul di terminal
-  console.log('\n📱 Scan QR Code di atas dengan WhatsApp kamu!\n');
+  // QR Code manual — munculin via qrcode-terminal (lebih reliable di Termux)
+  sock.ev.on('qr', (qr) => {
+    console.log('\n📱 SCAN QR CODE INI DENGAN WHATSAPP KAMU:\n');
+    qrcode.generate(qr, { small: true });
+    console.log('\n⬆️  Kalau QR gak muncul: coba kecilin font Termux (Ctrl+Alt+-) atau rotate HP ke landscape.\n');
+  });
 
   // Simpan creds secara otomatis
   sock.ev.on('creds.update', saveCreds);
