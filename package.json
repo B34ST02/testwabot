@@ -1,0 +1,17 @@
+{
+  "name": "wabot-termux",
+  "version": "1.0.0",
+  "description": "WhatsApp AI Bot - Gemini & GPT - Termux Ready",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.0",
+    "@google/generative-ai": "^0.21.0",
+    "openai": "^4.40.0",
+    "dotenv": "^16.4.0",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
